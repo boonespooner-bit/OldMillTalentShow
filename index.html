@@ -440,7 +440,8 @@
       const lineupEl = document.getElementById('lineup');
 
       try {
-        const resp = await fetch(CSV_URL);
+        const cacheBuster = '&_t=' + Date.now();
+        const resp = await fetch(CSV_URL + cacheBuster, { cache: 'no-store' });
         if (!resp.ok) throw new Error('Network response was not ok');
         const text = await resp.text();
         const rows = parseCSV(text);

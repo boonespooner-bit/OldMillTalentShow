@@ -271,10 +271,10 @@
       return result;
     }
 
-    // Fixed column indices: D=3 (Name), E=4 (Grade), G=6 (Act Title)
-    const NAME_COL = 3;
-    const GRADE_COL = 4;
-    const ACT_COL = 6;
+    // Fixed column indices: 5th value (idx 4) = Name, 6th (idx 5) = Grade, 10th (idx 9) = Act Title
+    const NAME_COL = 4;
+    const GRADE_COL = 5;
+    const ACT_COL = 9;
 
     async function loadLineup() {
       const loadingEl = document.getElementById('loading');

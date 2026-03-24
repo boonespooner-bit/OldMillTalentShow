@@ -465,9 +465,9 @@
           card.innerHTML = `
             <div class="act-number">${i + 1}</div>
             <div class="act-details">
-              <div class="act-title">${escapeHtml(row[ACT_COL])}</div>
+              <div class="act-title">${escapeHtml(row[NAME_COL])}</div>
               <div class="act-meta">
-                <span class="performer-name">${escapeHtml(row[NAME_COL])}</span>
+                <span class="performer-name">${escapeHtml(row[ACT_COL])}</span>
                 <span class="grade-badge">Grade ${escapeHtml(row[GRADE_COL])}</span>
               </div>
             </div>

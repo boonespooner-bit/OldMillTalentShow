@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Old Mill Talent Show</title>
+  <style>
+    :root {
+      --black: #1a1a1a;
+      --dark-gray: #2d2d2d;
+      --medium-gray: #555;
+      --light-gray: #e8e8e8;
+      --white: #ffffff;
+      --accent: #d4d4d4;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--white);
+      color: var(--black);
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 2.5rem 1rem 2rem;
+    }
+
+    .logo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 3px solid var(--white);
+    }
+
+    header h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: var(--accent);
+      font-weight: 300;
+    }
+
+    main {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 2rem 1rem 4rem;
+    }
+
+    #loading {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--medium-gray);
+      font-size: 1.1rem;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      border: 3px solid var(--light-gray);
+      border-top-color: var(--black);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-bottom: 1rem;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    #error {
+      display: none;
+      text-align: center;
+      padding: 3rem 1rem;
+      color: #b00;
+      font-size: 1rem;
+    }
+
+    .act-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .act-card {
+      display: flex;
+      align-items: center;
+      padding: 1.2rem 1.5rem;
+      border-bottom: 1px solid var(--light-gray);
+      transition: background-color 0.15s ease;
+    }
+
+    .act-card:hover {
+      background-color: #f5f5f5;
+    }
+
+    .act-number {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--black);
+      min-width: 48px;
+      text-align: center;
+      margin-right: 1.2rem;
+      background: var(--light-gray);
+      width: 48px;
+      height: 48px;
+      line-height: 48px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .act-details {
+      flex: 1;
+    }
+
+    .act-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 0.25rem;
+    }
+
+    .act-meta {
+      font-size: 0.92rem;
+      color: var(--medium-gray);
+    }
+
+    .act-meta .performer-name {
+      font-weight: 500;
+      color: var(--dark-gray);
+    }
+
+    .grade-badge {
+      display: inline-block;
+      background: var(--black);
+      color: var(--white);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.15rem 0.55rem;
+      border-radius: 10px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background-color: var(--black);
+      color: var(--accent);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.6rem;
+      }
+      header p {
+        font-size: 0.95rem;
+      }
+      .act-card {
+        padding: 1rem;
+      }
+      .act-number {
+        font-size: 1.3rem;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        min-width: 40px;
+        margin-right: 0.8rem;
+      }
+      .act-title {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img
+      class="logo"
+      src="https://137416808.cdn6.editmysite.com/uploads/1/3/7/4/137416808/RJFISDW6ZAIOLRMHE6FNANKJ.jpeg?width=240&optimize=medium"
+      alt="Old Mill School Logo"
+      onerror="this.style.display='none'"
+    >
+    <h1>Old Mill Talent Show</h1>
+    <p>Lineup &amp; Program</p>
+  </header>
+
+  <main>
+    <div id="loading">
+      <div class="spinner"></div>
+      <p>Loading lineup&hellip;</p>
+    </div>
+    <div id="error">
+      <p>Unable to load the lineup. Please try refreshing the page.</p>
+    </div>
+    <div id="lineup" class="act-list"></div>
+  </main>
+
+  <footer>
+    &copy; Old Mill School
+  </footer>
+
+  <script>
+    const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTWVv-SyrTLLVDC0pGmR0VhD_nGocLUILluWNCZCwWUegjZh_Y6106l-RmtQmh4P-9JLkxblCLUk8Uu/pub?output=csv';
+
+    function parseCSV(text) {
+      const rows = [];
+      let current = '';
+      let inQuotes = false;
+      const chars = text.trim();
+
+      for (let i = 0; i < chars.length; i++) {
+        const ch = chars[i];
+        if (inQuotes) {
+          if (ch === '"' && chars[i + 1] === '"') {
+            current += '"';
+            i++;
+          } else if (ch === '"') {
+            inQuotes = false;
+          } else {
+            current += ch;
+          }
+        } else {
+          if (ch === '"') {
+            inQuotes = true;
+          } else if (ch === ',') {
+            rows.push(current);
+            current = '';
+          } else if (ch === '\n' || (ch === '\r' && chars[i + 1] === '\n')) {
+            rows.push(current);
+            current = '';
+            if (ch === '\r') i++;
+            rows.push(null); // row delimiter
+          } else {
+            current += ch;
+          }
+        }
+      }
+      rows.push(current);
+
+      // Convert flat array with null delimiters into 2D array
+      const result = [];
+      let row = [];
+      for (const cell of rows) {
+        if (cell === null) {
+          result.push(row);
+          row = [];
+        } else {
+          row.push(cell.trim());
+        }
+      }
+      if (row.length > 0) result.push(row);
+      return result;
+    }
+
+    function findColumnIndex(headers, ...candidates) {
+      const lower = headers.map(h => h.toLowerCase());
+      for (const c of candidates) {
+        const idx = lower.findIndex(h => h.includes(c.toLowerCase()));
+        if (idx !== -1) return idx;
+      }
+      return -1;
+    }
+
+    async function loadLineup() {
+      const loadingEl = document.getElementById('loading');
+      const errorEl = document.getElementById('error');
+      const lineupEl = document.getElementById('lineup');
+
+      try {
+        const resp = await fetch(CSV_URL);
+        if (!resp.ok) throw new Error('Network response was not ok');
+        const text = await resp.text();
+        const rows = parseCSV(text);
+
+        if (rows.length < 2) throw new Error('No data found');
+
+        const headers = rows[0];
+        const nameIdx = findColumnIndex(headers, 'performer', 'name');
+        const gradeIdx = findColumnIndex(headers, 'grade');
+        const actIdx = findColumnIndex(headers, 'act', 'title');
+
+        if (nameIdx === -1 || gradeIdx === -1 || actIdx === -1) {
+          throw new Error('Could not find required columns');
+        }
+
+        const acts = rows.slice(1).filter(row =>
+          row.length > Math.max(nameIdx, gradeIdx, actIdx) &&
+          row[nameIdx] !== ''
+        );
+
+        loadingEl.style.display = 'none';
+
+        if (acts.length === 0) {
+          lineupEl.innerHTML = '<p style="text-align:center;padding:2rem;color:#555;">No acts to display yet. Check back soon!</p>';
+          return;
+        }
+
+        acts.forEach((row, i) => {
+          const card = document.createElement('div');
+          card.className = 'act-card';
+          card.innerHTML = `
+            <div class="act-number">${i + 1}</div>
+            <div class="act-details">
+              <div class="act-title">${escapeHtml(row[actIdx])}</div>
+              <div class="act-meta">
+                <span class="performer-name">${escapeHtml(row[nameIdx])}</span>
+                <span class="grade-badge">Grade ${escapeHtml(row[gradeIdx])}</span>
+              </div>
+            </div>
+          `;
+          lineupEl.appendChild(card);
+        });
+
+      } catch (err) {
+        console.error('Failed to load lineup:', err);
+        loadingEl.style.display = 'none';
+        errorEl.style.display = 'block';
+      }
+    }
+
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    loadLineup();
+  </script>
+</body>
+</html>

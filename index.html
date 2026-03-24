@@ -159,6 +159,104 @@
       vertical-align: middle;
     }
 
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: var(--black);
+    }
+
+    .volunteers-section {
+      background-color: #f9f9f9;
+      padding: 2.5rem 1rem;
+      border-top: 3px solid var(--black);
+    }
+
+    .volunteers-section .section-inner {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .volunteers-section p.section-intro {
+      text-align: center;
+      color: var(--medium-gray);
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .volunteer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .volunteer-card {
+      background: var(--white);
+      border: 1px solid var(--light-gray);
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      text-align: center;
+    }
+
+    .volunteer-card .volunteer-name {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--black);
+      margin-bottom: 0.25rem;
+    }
+
+    .volunteer-card .volunteer-role {
+      font-size: 0.85rem;
+      color: var(--medium-gray);
+    }
+
+    .thank-you-section {
+      background-color: var(--black);
+      color: var(--white);
+      padding: 2.5rem 1rem;
+      text-align: center;
+    }
+
+    .thank-you-section .section-title {
+      color: var(--white);
+    }
+
+    .thank-you-section p {
+      max-width: 650px;
+      margin: 0 auto 1rem;
+      font-size: 1rem;
+      color: var(--accent);
+      line-height: 1.6;
+    }
+
+    .feedback-section {
+      background-color: var(--white);
+      padding: 2rem 1rem;
+      text-align: center;
+      border-top: 1px solid var(--light-gray);
+    }
+
+    .feedback-link {
+      display: inline-block;
+      background: var(--black);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 0.8rem 2rem;
+      border-radius: 6px;
+      transition: background-color 0.15s ease;
+    }
+
+    .feedback-link:hover {
+      background: var(--dark-gray);
+    }
+
     footer {
       text-align: center;
       padding: 1.5rem 1rem;
@@ -213,6 +311,66 @@
     </div>
     <div id="lineup" class="act-list"></div>
   </main>
+
+  <section class="volunteers-section">
+    <div class="section-inner">
+      <h2 class="section-title">Student Council Volunteers</h2>
+      <p class="section-intro">A huge thank you to our Student Council members for making tonight possible!</p>
+      <div class="volunteer-grid">
+        <div class="volunteer-card">
+          <div class="volunteer-name">Placeholder Student 1</div>
+          <div class="volunteer-role">Stage Manager</div>
+        </div>
+        <div class="volunteer-card">
+          <div class="volunteer-name">Placeholder Student 2</div>
+          <div class="volunteer-role">Sound Technician</div>
+        </div>
+        <div class="volunteer-card">
+          <div class="volunteer-name">Placeholder Student 3</div>
+          <div class="volunteer-role">Lighting Crew</div>
+        </div>
+        <div class="volunteer-card">
+          <div class="volunteer-name">Placeholder Student 4</div>
+          <div class="volunteer-role">Emcee</div>
+        </div>
+        <div class="volunteer-card">
+          <div class="volunteer-name">Placeholder Student 5</div>
+          <div class="volunteer-role">Backstage Coordinator</div>
+        </div>
+        <div class="volunteer-card">
+          <div class="volunteer-name">Placeholder Student 6</div>
+          <div class="volunteer-role">Ticket Sales</div>
+        </div>
+        <div class="volunteer-card">
+          <div class="volunteer-name">Placeholder Student 7</div>
+          <div class="volunteer-role">Set Design</div>
+        </div>
+        <div class="volunteer-card">
+          <div class="volunteer-name">Placeholder Student 8</div>
+          <div class="volunteer-role">Program Design</div>
+        </div>
+        <div class="volunteer-card">
+          <div class="volunteer-name">Placeholder Student 9</div>
+          <div class="volunteer-role">Refreshments</div>
+        </div>
+        <div class="volunteer-card">
+          <div class="volunteer-name">Placeholder Student 10</div>
+          <div class="volunteer-role">Usher</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="thank-you-section">
+    <h2 class="section-title">Thank You to Our Volunteers</h2>
+    <p>Tonight would not be possible without the incredible parents, teachers, and community members who donated their time and energy. From setting up the venue to running concessions, your support means the world to our performers and the entire Old Mill community.</p>
+    <p>Thank you for making this a night to remember!</p>
+  </section>
+
+  <section class="feedback-section">
+    <p style="margin-bottom: 1rem; color: var(--medium-gray);">We'd love to hear from you!</p>
+    <a class="feedback-link" href="https://docs.google.com/forms/d/e/1FAIpQLSebxeVCz4AJVlpQMem-zKQlwFRHTnJoqA9EvPQoJXdZ1IFhdQ/viewform?usp=dialog" target="_blank" rel="noopener">Please Send Us Your Feedback</a>
+  </section>
 
   <footer>
     &copy; Old Mill School

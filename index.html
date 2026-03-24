@@ -429,10 +429,19 @@
       return result;
     }
 
-    // Fixed column indices: 5th value (idx 4) = Name, 6th (idx 5) = Grade, 10th (idx 9) = Act Title
-    const NAME_COL = 4;
-    const GRADE_COL = 5;
-    const ACT_COL = 9;
+    // Find columns by header name
+    const HEADER_NAME = 'Performer Names';
+    const HEADER_GRADE = "Performers' current grades";
+    const HEADER_ACT = 'Act title';
+
+    function findColumns(headerRow) {
+      const headers = headerRow.map(h => h.trim().toLowerCase());
+      return {
+        name: headers.indexOf(HEADER_NAME.toLowerCase()),
+        grade: headers.indexOf(HEADER_GRADE.toLowerCase()),
+        act: headers.indexOf(HEADER_ACT.toLowerCase()),
+      };
+    }
 
     async function loadLineup() {
       const loadingEl = document.getElementById('loading');
@@ -448,9 +457,14 @@
 
         if (rows.length < 2) throw new Error('No data found');
 
+        const cols = findColumns(rows[0]);
+        if (cols.name === -1 || cols.grade === -1 || cols.act === -1) {
+          throw new Error('Could not find required columns');
+        }
+
         const acts = rows.slice(1).filter(row =>
-          row.length > ACT_COL &&
-          row[NAME_COL] !== ''
+          row.length > Math.max(cols.name, cols.grade, cols.act) &&
+          row[cols.name] !== ''
         );
 
         loadingEl.style.display = 'none';
@@ -466,10 +480,10 @@
           card.innerHTML = `
             <div class="act-number">${i + 1}</div>
             <div class="act-details">
-              <div class="act-title">${escapeHtml(row[NAME_COL])}</div>
+              <div class="act-title">${escapeHtml(row[cols.name])}</div>
               <div class="act-meta">
-                <span class="performer-name">${escapeHtml(row[ACT_COL])}</span>
-                <span class="grade-badge">Grade ${escapeHtml(row[GRADE_COL])}</span>
+                <span class="performer-name">${escapeHtml(row[cols.act])}</span>
+                <span class="grade-badge">Grade ${escapeHtml(row[cols.grade])}</span>
               </div>
             </div>
           `;

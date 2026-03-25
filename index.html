@@ -189,30 +189,33 @@
 
     .volunteer-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
       max-width: 850px;
       margin: 0 auto;
     }
 
-    .volunteer-card {
+    .volunteer-group {
       background: var(--white);
       border: 1px solid var(--light-gray);
       border-radius: 8px;
-      padding: 1rem 1.2rem;
+      padding: 1.2rem 1.5rem;
       text-align: center;
     }
 
-    .volunteer-card .volunteer-name {
-      font-weight: 600;
-      font-size: 1rem;
+    .volunteer-group .group-title {
+      font-weight: 700;
+      font-size: 1.05rem;
       color: var(--black);
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--light-gray);
     }
 
-    .volunteer-card .volunteer-role {
-      font-size: 0.85rem;
+    .volunteer-group .volunteer-name {
+      font-size: 0.95rem;
       color: var(--medium-gray);
+      padding: 0.25rem 0;
     }
 
     .thank-you-section {
@@ -317,85 +320,39 @@
       <h2 class="section-title">Student Council Volunteers</h2>
       <p class="section-intro">A huge thank you to our Student Council members for making tonight possible!</p>
       <div class="volunteer-grid">
-        <div class="volunteer-card">
+        <div class="volunteer-group">
+          <div class="group-title">Decoration Team</div>
           <div class="volunteer-name">Aya Demonico</div>
-          <div class="volunteer-role">Decoration Team</div>
-        </div>
-        <div class="volunteer-card">
           <div class="volunteer-name">Millie Erman</div>
-          <div class="volunteer-role">Decoration Team</div>
-        </div>
-        <div class="volunteer-card">
           <div class="volunteer-name">Lily Baker</div>
-          <div class="volunteer-role">Decoration Team</div>
-        </div>
-        <div class="volunteer-card">
           <div class="volunteer-name">Sasha</div>
-          <div class="volunteer-role">Decoration Team</div>
-        </div>
-        <div class="volunteer-card">
           <div class="volunteer-name">Josephine Millette</div>
-          <div class="volunteer-role">Decoration Team</div>
-        </div>
-        <div class="volunteer-card">
           <div class="volunteer-name">Mae Pearl</div>
-          <div class="volunteer-role">Decoration Team</div>
-        </div>
-        <div class="volunteer-card">
           <div class="volunteer-name">Mira</div>
-          <div class="volunteer-role">Decoration Team</div>
-        </div>
-        <div class="volunteer-card">
           <div class="volunteer-name">Amelia Long</div>
-          <div class="volunteer-role">Decoration Team</div>
-        </div>
-        <div class="volunteer-card">
           <div class="volunteer-name">Aviana Karbe</div>
-          <div class="volunteer-role">Decoration Team</div>
         </div>
-        <div class="volunteer-card">
-          <div class="volunteer-name">Margo</div>
-          <div class="volunteer-role">Decoration Team</div>
-        </div>
-        <div class="volunteer-card">
-          <div class="volunteer-name">Simon Daniels</div>
-          <div class="volunteer-role">Assistant Stage Manager</div>
-        </div>
-        <div class="volunteer-card">
+        <div class="volunteer-group">
+          <div class="group-title">Announcements</div>
           <div class="volunteer-name">Grey Robinson</div>
-          <div class="volunteer-role">Announcements</div>
-        </div>
-        <div class="volunteer-card">
           <div class="volunteer-name">Margo White</div>
-          <div class="volunteer-role">Announcements</div>
-        </div>
-        <div class="volunteer-card">
           <div class="volunteer-name">Eden Pluskowski</div>
-          <div class="volunteer-role">Announcements</div>
-        </div>
-        <div class="volunteer-card">
           <div class="volunteer-name">Sylvie Keiser</div>
-          <div class="volunteer-role">Announcements</div>
-        </div>
-        <div class="volunteer-card">
           <div class="volunteer-name">Nora Woolley</div>
-          <div class="volunteer-role">Announcements</div>
         </div>
-        <div class="volunteer-card">
-          <div class="volunteer-name">Eden Pluskowski</div>
-          <div class="volunteer-role">Clean Up Crew</div>
-        </div>
-        <div class="volunteer-card">
+        <div class="volunteer-group">
+          <div class="group-title">Audience Management</div>
           <div class="volunteer-name">Layla Karlen</div>
-          <div class="volunteer-role">Audience Management</div>
-        </div>
-        <div class="volunteer-card">
           <div class="volunteer-name">Frankie McClay</div>
-          <div class="volunteer-role">Audience Management</div>
-        </div>
-        <div class="volunteer-card">
           <div class="volunteer-name">Owen Locks</div>
-          <div class="volunteer-role">Audience Management</div>
+        </div>
+        <div class="volunteer-group">
+          <div class="group-title">Assistant Stage Manager</div>
+          <div class="volunteer-name">Simon Daniels</div>
+        </div>
+        <div class="volunteer-group">
+          <div class="group-title">Clean Up Crew</div>
+          <div class="volunteer-name">Eden Pluskowski</div>
         </div>
       </div>
     </div>

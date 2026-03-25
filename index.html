@@ -480,10 +480,9 @@
           card.innerHTML = `
             <div class="act-number">${i + 1}</div>
             <div class="act-details">
-              <div class="act-title">${escapeHtml(row[cols.name])}</div>
+              <div class="act-title">${escapeHtml(row[cols.name])} <span class="grade-badge">${escapeHtml(row[cols.grade])}</span></div>
               <div class="act-meta">
                 <span class="performer-name">${escapeHtml(row[cols.act])}</span>
-                <span class="grade-badge">${escapeHtml(row[cols.grade])}</span>
               </div>
             </div>
           `;

@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boone Spooner : Portfolio</title>
+  <meta name="description" content="Boone Spooner - Product Manager, Design and Music">
+  <meta name="keywords" content="mobile design, application design">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #fff;
+      color: #333;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 40px 20px 20px;
+    }
+
+    .header a {
+      display: inline-block;
+    }
+
+    .header img {
+      max-width: 535px;
+      width: 100%;
+      height: auto;
+    }
+
+    /* Navigation */
+    .nav {
+      text-align: center;
+      padding: 10px 20px 30px;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+    }
+
+    .nav a {
+      color: #999;
+      text-decoration: none;
+      margin: 0 12px;
+      transition: color 0.2s;
+      font-weight: 400;
+    }
+
+    .nav a:hover {
+      color: #333;
+    }
+
+    .nav .active {
+      color: #333;
+    }
+
+    .nav .divider {
+      color: #ccc;
+      margin: 0 4px;
+    }
+
+    /* Filter Tags */
+    .filters {
+      text-align: center;
+      padding: 0 20px 25px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .filters a {
+      display: inline-block;
+      font-size: 11px;
+      color: #999;
+      text-decoration: none;
+      margin: 3px 6px;
+      padding: 3px 10px;
+      border: 1px solid #e0e0e0;
+      border-radius: 3px;
+      transition: all 0.2s;
+      letter-spacing: 0.03em;
+    }
+
+    .filters a:hover,
+    .filters a.active {
+      color: #333;
+      border-color: #999;
+    }
+
+    /* Project Grid */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 0;
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .project-thumb {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .project-thumb a {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .project-thumb .thumb-image {
+      width: 100%;
+      aspect-ratio: 320 / 212;
+      overflow: hidden;
+      background: #f5f5f5;
+    }
+
+    .project-thumb .thumb-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.3s ease;
+    }
+
+    .project-thumb:hover .thumb-image img {
+      opacity: 0.85;
+    }
+
+    .thumb-info {
+      padding: 10px 5px 20px;
+    }
+
+    .thumb-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: #333;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .thumb-tags {
+      font-size: 11px;
+      color: #aaa;
+      letter-spacing: 0.02em;
+    }
+
+    .thumb-tags a {
+      color: #aaa;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .thumb-tags a:hover {
+      color: #666;
+    }
+
+    /* Back link */
+    .back-link {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .back-link a {
+      font-size: 12px;
+      color: #999;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    .back-link a:hover {
+      color: #333;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 30px 20px 40px;
+      font-size: 11px;
+      color: #ccc;
+      border-top: 1px solid #f0f0f0;
+      margin-top: 20px;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .project-grid {
+        grid-template-columns: 1fr;
+        padding: 0 15px;
+      }
+
+      .header {
+        padding: 25px 15px 15px;
+      }
+
+      .header img {
+        max-width: 320px;
+      }
+    }
+
+    @media (min-width: 701px) and (max-width: 1050px) {
+      .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1051px) {
+      .project-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <a href="/portfolio/">
+      <img src="https://media.cargocollective.com/1/8/260033/headerimg/bstitle.png" alt="Boone Spooner" height="75" width="535">
+    </a>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="/portfolio/" class="active">Work</a>
+    <a href="/portfolio/music.html">Music</a>
+    <a href="/portfolio/about.html">About Me</a>
+    <span class="divider">|</span>
+    <a href="/">Home</a>
+  </nav>
+
+  <!-- Project Grid -->
+  <div class="project-grid">
+
+    <!-- TuneIn 2014 Launch -->
+    <div class="project-thumb" data-tags="product ux">
+      <a href="https://cargocollective.com/boonespooner/TuneIn-2014-Launch" target="_blank" rel="noopener">
+        <div class="thumb-image">
+          <img src="https://payload.cargocollective.com/1/8/260033/12980797/prt_320x212_1499033154_2x.png" alt="TuneIn 2014 Launch" loading="lazy">
+        </div>
+        <div class="thumb-info">
+          <div class="thumb-title">TuneIn 2014 Launch</div>
+          <div class="thumb-tags">product, ux</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Google Now Cards -->
+    <div class="project-thumb" data-tags="product ui ux">
+      <a href="https://cargocollective.com/boonespooner/Google-Now-Cards" target="_blank" rel="noopener">
+        <div class="thumb-image">
+          <img src="https://payload.cargocollective.com/1/8/260033/12980762/prt_320x212_1499032351_2x.png" alt="Google Now Cards" loading="lazy">
+        </div>
+        <div class="thumb-info">
+          <div class="thumb-title">Google Now Cards</div>
+          <div class="thumb-tags">product, ui, ux</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- TuneIn Material Design Explorations -->
+    <div class="project-thumb" data-tags="tunein ui ui-design">
+      <a href="https://cargocollective.com/boonespooner/TuneIn-Material-Design-Explorations" target="_blank" rel="noopener">
+        <div class="thumb-image">
+          <img src="https://payload.cargocollective.com/1/8/260033/12978889/prt_320x212_1498950628_2x.jpg" alt="TuneIn Material Design Explorations" loading="lazy">
+        </div>
+        <div class="thumb-info">
+          <div class="thumb-title">TuneIn Material Design Explorations</div>
+          <div class="thumb-tags">tunein, ui, ui design</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Google Home Design -->
+    <div class="project-thumb" data-tags="product ui ux">
+      <a href="https://cargocollective.com/boonespooner/Google-Home-Design" target="_blank" rel="noopener">
+        <div class="thumb-image">
+          <img src="https://payload.cargocollective.com/1/8/260033/12978910/prt_320x212_1498967505_2x.png" alt="Google Home Design" loading="lazy">
+        </div>
+        <div class="thumb-info">
+          <div class="thumb-title">Google Home Design</div>
+          <div class="thumb-tags">product, ui, ux</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Google Chromecast -->
+    <div class="project-thumb" data-tags="product ui ux">
+      <a href="https://cargocollective.com/boonespooner/Google-Chromecast" target="_blank" rel="noopener">
+        <div class="thumb-image">
+          <img src="https://payload.cargocollective.com/1/8/260033/12980713/prt_320x212_1499030323_2x.png" alt="Google Chromecast" loading="lazy">
+        </div>
+        <div class="thumb-info">
+          <div class="thumb-title">Google Chromecast</div>
+          <div class="thumb-tags">product, ui, ux</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Android TV Leanback -->
+    <div class="project-thumb" data-tags="ux product">
+      <a href="https://cargocollective.com/boonespooner/Android-TV-Leanback" target="_blank" rel="noopener">
+        <div class="thumb-image">
+          <img src="https://payload.cargocollective.com/1/8/260033/12979164/prt_320x212_1498966878_2x.jpg" alt="Android TV Leanback" loading="lazy">
+        </div>
+        <div class="thumb-info">
+          <div class="thumb-title">Android TV Leanback</div>
+          <div class="thumb-tags">ux, product</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Apple Watch -->
+    <div class="project-thumb" data-tags="ux ui">
+      <a href="https://cargocollective.com/boonespooner/Apple-Watch" target="_blank" rel="noopener">
+        <div class="thumb-image">
+          <img src="https://payload.cargocollective.com/1/8/260033/12979173/prt_320x212_1499029962_2x.jpg" alt="Apple Watch" loading="lazy">
+        </div>
+        <div class="thumb-info">
+          <div class="thumb-title">Apple Watch</div>
+          <div class="thumb-tags">ux, ui</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Windows 8 Wireframes -->
+    <div class="project-thumb" data-tags="ux-design">
+      <a href="https://cargocollective.com/boonespooner/Windows-8-Wireframes" target="_blank" rel="noopener">
+        <div class="thumb-image">
+          <img src="https://payload.cargocollective.com/1/8/260033/5826804/prt_320x212_1371477510.png" alt="Windows 8 Wireframes" loading="lazy">
+        </div>
+        <div class="thumb-info">
+          <div class="thumb-title">Windows 8 Wireframes</div>
+          <div class="thumb-tags">ux design</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Camping Light -->
+    <div class="project-thumb" data-tags="product tinkering">
+      <a href="https://cargocollective.com/boonespooner/Camping-Light" target="_blank" rel="noopener">
+        <div class="thumb-image">
+          <img src="https://payload.cargocollective.com/1/8/260033/12981332/prt_320x212_1499054363_2x.jpg" alt="Camping Light" loading="lazy">
+        </div>
+        <div class="thumb-info">
+          <div class="thumb-title">Camping Light</div>
+          <div class="thumb-tags">product, tinkering</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Android Tablets -->
+    <div class="project-thumb" data-tags="ui-design ux-design">
+      <a href="https://cargocollective.com/boonespooner/Android-Tablets" target="_blank" rel="noopener">
+        <div class="thumb-image">
+          <img src="https://payload.cargocollective.com/1/8/260033/5791151/prt_320x212_1370927925.png" alt="Android Tablets" loading="lazy">
+        </div>
+        <div class="thumb-info">
+          <div class="thumb-title">Android Tablets</div>
+          <div class="thumb-tags">ui design, ux design</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Android Car Mode -->
+    <div class="project-thumb" data-tags="ux-design ui-design">
+      <a href="https://cargocollective.com/boonespooner/Android-Car-Mode" target="_blank" rel="noopener">
+        <div class="thumb-image">
+          <img src="https://payload.cargocollective.com/1/8/260033/5791064/prt_320x212_1370926060.png" alt="Android Car Mode" loading="lazy">
+        </div>
+        <div class="thumb-info">
+          <div class="thumb-title">Android Car Mode</div>
+          <div class="thumb-tags">ux design, ui design</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- iOS Redesign -->
+    <div class="project-thumb" data-tags="ui-design visual-design ux-design">
+      <a href="https://cargocollective.com/boonespooner/iOS-Redesign" target="_blank" rel="noopener">
+        <div class="thumb-image">
+          <img src="https://payload.cargocollective.com/1/8/260033/5799041/prt_320x212_1371015452.png" alt="iOS Redesign" loading="lazy">
+        </div>
+        <div class="thumb-info">
+          <div class="thumb-title">iOS Redesign</div>
+          <div class="thumb-tags">ui design, visual design, ux design</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Google I/O Jelly Bean Notifications -->
+    <div class="project-thumb" data-tags="ui-design ux-design">
+      <a href="https://cargocollective.com/boonespooner/Google-I-O-Jelly-Bean-Notifications" target="_blank" rel="noopener">
+        <div class="thumb-image">
+          <img src="https://payload.cargocollective.com/1/8/260033/5776941/prt_320x212_1370923805.png" alt="Google I/O Jelly Bean Notifications" loading="lazy">
+        </div>
+        <div class="thumb-info">
+          <div class="thumb-title">Google I/O Jelly Bean Notifications</div>
+          <div class="thumb-tags">ui design, ux design</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- TuneIn In-Dash Carmode -->
+    <div class="project-thumb" data-tags="ui-design visual-design ux-design">
+      <a href="https://cargocollective.com/boonespooner/TuneIn-In-Dash-Carmode" target="_blank" rel="noopener">
+        <div class="thumb-image">
+          <img src="https://payload.cargocollective.com/1/8/260033/5839125/prt_320x212_1371617315.png" alt="TuneIn In-Dash Carmode" loading="lazy">
+        </div>
+        <div class="thumb-info">
+          <div class="thumb-title">TuneIn In-Dash Carmode</div>
+          <div class="thumb-tags">ui design, visual design, ux design</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Android Auto -->
+    <div class="project-thumb" data-tags="product ui ux">
+      <a href="https://cargocollective.com/boonespooner/Android-Auto" target="_blank" rel="noopener">
+        <div class="thumb-image">
+          <img src="https://payload.cargocollective.com/1/8/260033/12978897/prt_320x212_1498951153_2x.jpg" alt="Android Auto" loading="lazy">
+        </div>
+        <div class="thumb-info">
+          <div class="thumb-title">Android Auto</div>
+          <div class="thumb-tags">product, ui, ux</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Animations -->
+    <div class="project-thumb" data-tags="animations ux-design">
+      <a href="https://cargocollective.com/boonespooner/Animations" target="_blank" rel="noopener">
+        <div class="thumb-image">
+          <img src="https://payload.cargocollective.com/1/8/260033/5791173/prt_320x212_1370933050.jpg" alt="Animations" loading="lazy">
+        </div>
+        <div class="thumb-info">
+          <div class="thumb-title">Animations</div>
+          <div class="thumb-tags">animations, ux design</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- TuneIn Radio Free App Icon -->
+    <div class="project-thumb" data-tags="visual-design">
+      <a href="https://cargocollective.com/boonespooner/TuneIn-Radio-Free-App-Icon" target="_blank" rel="noopener">
+        <div class="thumb-image">
+          <img src="https://payload.cargocollective.com/1/8/260033/5769229/prt_320x212_1370716722.png" alt="TuneIn Radio Free App Icon" loading="lazy">
+        </div>
+        <div class="thumb-info">
+          <div class="thumb-title">TuneIn Radio Free App Icon</div>
+          <div class="thumb-tags">visual design</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- TuneIn Radio Pro App Icon -->
+    <div class="project-thumb" data-tags="visual-design">
+      <a href="https://cargocollective.com/boonespooner/TuneIn-Radio-Pro-App-Icon" target="_blank" rel="noopener">
+        <div class="thumb-image">
+          <img src="https://payload.cargocollective.com/1/8/260033/3705879/prt_320x212_1370716779.png" alt="TuneIn Radio Pro App Icon" loading="lazy">
+        </div>
+        <div class="thumb-info">
+          <div class="thumb-title">TuneIn Radio Pro App Icon</div>
+          <div class="thumb-tags">visual design</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- The World's Radio Campaign -->
+    <div class="project-thumb" data-tags="visual-design creative-lead">
+      <a href="https://cargocollective.com/boonespooner/The-World-s-Radio-Campaign" target="_blank" rel="noopener">
+        <div class="thumb-image">
+          <img src="https://payload.cargocollective.com/1/8/260033/5784010/prt_320x212_1371044264.png" alt="The World's Radio Campaign" loading="lazy">
+        </div>
+        <div class="thumb-info">
+          <div class="thumb-title">The World's Radio Campaign</div>
+          <div class="thumb-tags">visual design, creative lead</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Mog Redesign -->
+    <div class="project-thumb" data-tags="ui-design ux-design">
+      <a href="https://cargocollective.com/boonespooner/Mog-Redesign" target="_blank" rel="noopener">
+        <div class="thumb-image">
+          <img src="https://payload.cargocollective.com/1/8/260033/5800717/prt_320x212_1371043621.png" alt="Mog Redesign" loading="lazy">
+        </div>
+        <div class="thumb-info">
+          <div class="thumb-title">Mog Redesign</div>
+          <div class="thumb-tags">ui design, ux design</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Alsop Louie Partners Logo & Website -->
+    <div class="project-thumb" data-tags="visual-design ui-design">
+      <a href="https://cargocollective.com/boonespooner/Alsop-Louie-Partners-Logo-Website" target="_blank" rel="noopener">
+        <div class="thumb-image">
+          <img src="https://payload.cargocollective.com/1/8/260033/5935370/prt_320x212_1373002464.png" alt="Alsop Louie Partners Logo & Website" loading="lazy">
+        </div>
+        <div class="thumb-info">
+          <div class="thumb-title">Alsop Louie Partners Logo &amp; Website</div>
+          <div class="thumb-tags">visual design, ui design</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Oak & Alder Logo -->
+    <div class="project-thumb" data-tags="">
+      <a href="https://cargocollective.com/boonespooner/Oak-Alder-Logo" target="_blank" rel="noopener">
+        <div class="thumb-image">
+          <img src="https://payload.cargocollective.com/1/8/260033/5935338/prt_320x212_1373003400.png" alt="Oak & Alder Logo" loading="lazy">
+        </div>
+        <div class="thumb-info">
+          <div class="thumb-title">Oak &amp; Alder Logo</div>
+          <div class="thumb-tags"></div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Musicians@Google -->
+    <div class="project-thumb" data-tags="music production google">
+      <a href="https://cargocollective.com/boonespooner/Musicians-Google" target="_blank" rel="noopener">
+        <div class="thumb-image">
+          <img src="https://payload.cargocollective.com/1/8/260033/5889665/prt_320x212_1372341011.png" alt="Musicians@Google" loading="lazy">
+        </div>
+        <div class="thumb-info">
+          <div class="thumb-title">Musicians@Google</div>
+          <div class="thumb-tags">music, production, google</div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Back to Home -->
+  <div class="back-link">
+    <a href="/">&larr; boonespooner.com</a>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    &copy; Boone Spooner
+  </div>
+
+</body>
+</html>

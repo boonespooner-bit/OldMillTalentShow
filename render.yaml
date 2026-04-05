@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: old-mill-talent-show
+    name: boone-spooner-site
     runtime: static
     buildCommand: echo "Static site - no build needed"
     staticPublishPath: .
@@ -9,3 +9,10 @@ services:
       - path: /*
         name: Cache-Control
         value: no-cache
+    routes:
+      - type: rewrite
+        source: /portfolio
+        destination: /portfolio/index.html
+      - type: rewrite
+        source: /portfolio/
+        destination: /portfolio/index.html
